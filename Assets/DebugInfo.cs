@@ -9,12 +9,25 @@ public class DebugInfo : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    debugText = GameObject.Find("Debug").GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	    debugText.text = Input.gyro.rotationRate.ToString();
-	}
+	    var debugGo = GameObject.Find("Debug");
+
+        debugText = debugGo.GetComponent<Text>();
+	    Input.gyro.enabled = true;
+
+#if !DEBUG
+        debugGo.SetActive(false);
+#endif
+
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        debugText.text = "";
+    }
+
+    public void SetDebugMsg(string msg)
+    {
+        debugText.text = debugText.text + "\n" + msg;
+    }
 }
