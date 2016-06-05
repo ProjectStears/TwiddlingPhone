@@ -11,9 +11,6 @@ public class ScoreCounter : MonoBehaviour
 
     private float maxDistance;
 
-    private List<string> scoreList;
-
-
     // Use this for initialization
     void Start()
     {
@@ -22,8 +19,6 @@ public class ScoreCounter : MonoBehaviour
         sphere = GameObject.Find("Sphere");
         scoreText = GameObject.Find("Score").GetComponent<Text>();
         score = 0;
-
-        scoreList = new List<string>();
     }
 
     // Update is called once per frame
@@ -35,16 +30,12 @@ public class ScoreCounter : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Time.frameCount%60 == 0)
+        if (Time.frameCount % 60 == 0)
         {
-            scoreList.Add(Time.realtimeSinceStartup + " - " + score);
+            Config.LogData.Add(Time.timeSinceLevelLoad + " - " + score);
         }
     }
 
-    void OnApplicationPause(bool pauseStatus)
-    {
-        if (pauseStatus)
-            File.WriteAllLines(Application.persistentDataPath + "/blubscore.txt", scoreList.ToArray());
-    }
+
 
 }
