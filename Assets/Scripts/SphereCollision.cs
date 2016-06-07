@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SphereCollision : MonoBehaviour
 {
+    private ScoreCounter scoreCounter;
     private GameObject hitHighlight;
     private float highlightDuration;
     private float highlightTimer;
@@ -11,6 +12,8 @@ public class SphereCollision : MonoBehaviour
     {
         hitHighlight = GameObject.Find("HitHighlight");
         hitHighlight.SetActive(false);
+
+        scoreCounter = GameObject.Find("GameController").GetComponent<ScoreCounter>();
 
         highlightDuration = 0.5f;
         highlightTimer = -1;
@@ -34,6 +37,7 @@ public class SphereCollision : MonoBehaviour
         if (collision.collider.tag == "Respawn")
         {
             highlightTimer = highlightDuration;
+            scoreCounter.ReducePlayerScore(Time.deltaTime *900);
         }
     }
 }

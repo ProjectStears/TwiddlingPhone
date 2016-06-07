@@ -7,6 +7,7 @@ public class ScoreCounter : MonoBehaviour
 {
     private Text scoreText;
     private float score;
+    private float playerScore;
     private GameObject sphere;
 
     private int lastSecond;
@@ -26,8 +27,11 @@ public class ScoreCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = score + (maxDistance - Vector3.Magnitude(sphere.transform.position))*Time.deltaTime*2;
-        scoreText.text = Mathf.RoundToInt(score).ToString();
+        var addscore = (maxDistance - Vector3.Magnitude(sphere.transform.position)) * Time.deltaTime * 2;
+
+        score = score + addscore;
+        playerScore = playerScore + addscore;
+        scoreText.text = Mathf.RoundToInt(playerScore).ToString();
     }
 
     void LateUpdate()
@@ -37,7 +41,13 @@ public class ScoreCounter : MonoBehaviour
         if (lastSecond != thisSecond)
         {
             lastSecond = thisSecond;
-            Config.LogData.Add(Time.timeSinceLevelLoad + " - " + score);
+            Config.LogData.Add(Time.timeSinceLevelLoad + " - " + score + " - " + playerScore);
         }
+    }
+
+    public void ReducePlayerScore(float reduction)
+    {
+        playerScore = playerScore - reduction;
+        Debug.Log("Reducing by: " + reduction);
     }
 }

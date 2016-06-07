@@ -23,8 +23,6 @@ public class Control : MonoBehaviour
 	
 	void Update ()
     { 
-        //Todo: compensate for start position of roll
-
 #if UNITY_EDITOR
 
         pitch += Input.GetAxis("Vertical"); 
