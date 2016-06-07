@@ -55,6 +55,9 @@ public class CommandGetter : MonoBehaviour
                 Config.LogData.Add(Time.timeSinceLevelLoad + " - NoCrash");
                 break;
             case 5:
+                Config.LogData.Add(Time.timeSinceLevelLoad + " - CUSTOM");
+                break;
+            case 6:
                 Config.LogData.Add(Time.timeSinceLevelLoad + " - End");
                 Application.Quit();
                 break;
