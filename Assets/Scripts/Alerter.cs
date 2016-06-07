@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Alerter : MonoBehaviour
 {
     private GameObject alertPanel;
-    private bool lastState;
+
+    //private bool lastState;
     private float alertTimer;
     private float alertDuration;
-
 
 	// Use this for initialization
 	void Start ()
@@ -32,7 +31,7 @@ public class Alerter : MonoBehaviour
 	        alertPanel.SetActive(false);
 	    }
 
-
+        /*
 	    if (Input.touchCount > 0)
 	    {
 	        if (!lastState && alertTimer < 0)
@@ -46,9 +45,10 @@ public class Alerter : MonoBehaviour
 	    {
 	        lastState = false;
 	    }
+        */
 	}
 
-    private void ShowAlert()
+    public void ShowAlert()
     {
         alertTimer = alertDuration;
         alertPanel.SetActive(true);
