@@ -9,6 +9,8 @@ public class ScoreCounter : MonoBehaviour
     private float score;
     private GameObject sphere;
 
+    private int lastSecond;
+
     private float maxDistance;
 
     // Use this for initialization
@@ -30,12 +32,12 @@ public class ScoreCounter : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Time.frameCount % 60 == 0)
+        var thisSecond = Mathf.RoundToInt(Time.timeSinceLevelLoad);
+
+        if (lastSecond != thisSecond)
         {
+            lastSecond = thisSecond;
             Config.LogData.Add(Time.timeSinceLevelLoad + " - " + score);
         }
     }
-
-
-
 }
