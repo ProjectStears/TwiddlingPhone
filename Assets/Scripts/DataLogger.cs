@@ -14,12 +14,6 @@ public class DataLogger : MonoBehaviour
         CalcFileName();
     }
 
-    void OnApplicationPause(bool pauseStatus)
-    {
-        if (pauseStatus)
-            File.WriteAllLines(SaveFile, Config.LogData.ToArray());
-    }
-
     private void CalcFileName()
     {
         while (File.Exists(SaveFile))
@@ -28,5 +22,19 @@ public class DataLogger : MonoBehaviour
         }
     }
 
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+            SaveData();
+    }
 
+    void OnApplicationQuit()
+    {
+        SaveData();
+    }
+
+    private void SaveData()
+    {
+        File.WriteAllLines(SaveFile, Config.LogData.ToArray());
+    }
 }

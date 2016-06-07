@@ -47,8 +47,10 @@ public class Control : MonoBehaviour
 
     void LateUpdate()
     {
+#if DEBUG
         this.GetComponent<DebugInfo>().SetDebugMsg(pitch + " " + roll);
         this.GetComponent<DebugInfo>().SetDebugMsg(Config.SaveFileName);
+#endif
     }
 
 
