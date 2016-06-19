@@ -37,7 +37,7 @@ public class Control : MonoBehaviour
 
         playfieldRig.transform.rotation = Quaternion.AngleAxis(pitch, Vector3.right) * Quaternion.AngleAxis(roll,Vector3.down);
 
-	    if (Random.value < 0.01)
+	    if (Random.value < 0.013)
 	    {
 	        Bounce();
 	    }
