@@ -46,7 +46,7 @@ public class Control : MonoBehaviour
     void LateUpdate()
     {
 #if DEBUG
-        this.GetComponent<DebugInfo>().SetDebugMsg(pitch + " " + roll);
+        this.GetComponent<DebugInfo>().SetDebugMsg(sphere.transform.position.ToString());
         this.GetComponent<DebugInfo>().SetDebugMsg(Config.SaveFileName);
 #endif
     }

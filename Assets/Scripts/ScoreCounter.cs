@@ -29,9 +29,17 @@ public class ScoreCounter : MonoBehaviour
     {
         var addscore = (maxDistance - Vector3.Magnitude(sphere.transform.position)) * Time.deltaTime * 2;
 
+        if (sphere.transform.position.z > 3f)
+        {
+            sphere.transform.position = new Vector3(0, 0, -0.2f);
+            playerScore = playerScore - 50;
+            Config.LogData.Add(Time.timeSinceLevelLoad + " - Ball dropped out of bounds -50");
+        }
+
         score = score + addscore;
         playerScore = playerScore + addscore;
         scoreText.text = Mathf.RoundToInt(playerScore).ToString();
+
     }
 
     void LateUpdate()
