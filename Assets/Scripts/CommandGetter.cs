@@ -15,8 +15,8 @@ public class CommandGetter : MonoBehaviour
     {
         alerter = this.gameObject.GetComponent<Alerter>();
 
-        urlget = "http://aspepex.net/twiddle/twiddledata-23we4asdg76.txt";
-        urlreset = "http://aspepex.net/twiddle/resetdata-hsdr47o2l20.php";
+        urlget = "http://srv.aspepex.net/twiddle/twiddledata-23we4asdg76.txt";
+        urlreset = "http://srv.aspepex.net/twiddle/resetdata-hsdr47o2l20.php";
 
         wwwreset = new WWW(urlreset);
         wwwget = new WWW(urlget);
