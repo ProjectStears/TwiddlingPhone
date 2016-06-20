@@ -25,6 +25,11 @@ public class Alerter : MonoBehaviour
 	    if (alertTimer > 0)
 	    {
 	        alertTimer = alertTimer - Time.deltaTime;
+
+	        if (Input.touchCount > 0)
+	        {
+	            alertTimer = -1;
+	        }
 	    }
 	    else
 	    {
